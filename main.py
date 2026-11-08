@@ -1,5 +1,9 @@
+from agenda.interfaz import VentanaPrincipal
+
+
 def main():
-    print("agenda de contactos")
+    app = VentanaPrincipal()
+    app.mainloop()
 
 
 if __name__ == "__main__":
