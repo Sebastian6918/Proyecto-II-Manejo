@@ -5,6 +5,7 @@ from tkinter import ttk, messagebox, simpledialog
 
 from . import config, integridad
 from .archivo_contactos import ArchivoCorruptoError
+from .metadatos import formatear_tamano
 from .registro import Contacto, ContactoInvalidoError, RegistroInvalidoError, LARGOS
 from .servicio import Agenda, AgendaError
 
@@ -88,16 +89,16 @@ class VentanaPrincipal(tk.Tk):
         barra.add_cascade(label="Contactos", menu=contactos)
 
         exportar = tk.Menu(barra, tearoff=False)
-        exportar.add_command(label="Exportar a JSON", command=self.pendiente)
-        exportar.add_command(label="Generar reporte PDF", command=self.pendiente)
+        exportar.add_command(label="Exportar a JSON", command=self.exportar_json)
+        exportar.add_command(label="Generar reporte PDF", command=self.generar_pdf)
         barra.add_cascade(label="Exportar", menu=exportar)
 
         herramientas = tk.Menu(barra, tearoff=False)
-        herramientas.add_command(label="Verificar integridad", command=self.pendiente)
-        herramientas.add_command(label="Crear respaldo ZIP", command=self.pendiente)
-        herramientas.add_command(label="Información del archivo", command=self.pendiente)
+        herramientas.add_command(label="Verificar integridad", command=self.verificar_integridad)
+        herramientas.add_command(label="Crear respaldo ZIP", command=self.crear_respaldo)
+        herramientas.add_command(label="Información del archivo", command=self.mostrar_info_archivo)
         herramientas.add_separator()
-        herramientas.add_command(label="Reconstruir índice", command=self.pendiente)
+        herramientas.add_command(label="Reconstruir índice", command=self.reconstruir_indice)
         barra.add_cascade(label="Herramientas", menu=herramientas)
 
         ayuda = tk.Menu(barra, tearoff=False)
@@ -330,10 +331,100 @@ class VentanaPrincipal(tk.Tk):
             id_contacto = int(self.tabla.item(seleccion[0], "values")[2])
             self.buscar(id_contacto)
 
-    # ---- ayuda (simulado) ----
+    # ---- exportar ----
 
-    def pendiente(self):
-        messagebox.showinfo("Pendiente", "Esta opción todavía no está lista.", parent=self)
+    @manejar_errores
+    def exportar_json(self):
+        ruta = self.agenda.exportar_json()
+        self.log(f"EXPORTAR JSON → {ruta}")
+        messagebox.showinfo("Exportar JSON", f"Contactos exportados en:\n{ruta}", parent=self)
+
+    @manejar_errores
+    def generar_pdf(self):
+        ruta = self.agenda.generar_pdf()
+        self.log(f"REPORTE PDF (hecho desde contactos.json) → {ruta}")
+        messagebox.showinfo("Reporte PDF", f"Reporte generado en:\n{ruta}", parent=self)
+
+    # ---- herramientas ----
+
+    @manejar_errores
+    def verificar_integridad(self):
+        resultado = self.agenda.verificar_integridad()
+        if resultado.estado == integridad.OK:
+            self.log("VERIFICAR: OK")
+            messagebox.showinfo("Integridad", f"El archivo está bien, no lo han tocado.\n\n"
+                                              f"SHA-256:\n{resultado.hash_actual}", parent=self)
+        elif resultado.estado == integridad.SIN_HASH:
+            self.log("VERIFICAR: no hay hash guardado")
+            messagebox.showwarning("Integridad", "No existe contactos.sha256 para comparar.", parent=self)
+        else:
+            self.log("VERIFICAR: el archivo fue ALTERADO")
+            self.alerta_integridad(resultado)
+            self.refrescar_tabla()
+
+    @manejar_errores
+    def crear_respaldo(self):
+        r = self.agenda.crear_respaldo()
+        lineas = [f"{nombre}: {formatear_tamano(orig)} → {formatear_tamano(comp)}"
+                  for nombre, orig, comp in r.detalle]
+        mensaje = (f"Respaldo creado:\n{r.ruta_zip}\n\n" + "\n".join(lineas) +
+                   f"\n\nTamaño original: {formatear_tamano(r.tamano_original)}"
+                   f"\nTamaño del ZIP: {formatear_tamano(r.tamano_comprimido)}"
+                   f"\nAhorro: {r.porcentaje_ahorro:.1f} %")
+        self.log(f"RESPALDO {r.ruta_zip.name}: {r.tamano_original} → {r.tamano_comprimido} bytes "
+                 f"({r.porcentaje_ahorro:.1f} % de ahorro)")
+        messagebox.showinfo("Respaldo ZIP", mensaje, parent=self)
+
+    @manejar_errores
+    def mostrar_info_archivo(self):
+        infos = self.agenda.info_archivos()
+
+        ventana = tk.Toplevel(self)
+        ventana.title("Información del archivo")
+        ventana.transient(self)
+        ventana.resizable(False, False)
+
+        columnas = ["propiedad"] + [i.ruta.name for i in infos]
+        tabla = ttk.Treeview(ventana, columns=columnas, show="headings", height=7)
+        for col in columnas:
+            tabla.heading(col, text="Propiedad" if col == "propiedad" else col)
+            tabla.column(col, width=170 if col == "propiedad" else 200, anchor="w")
+
+        def si_no(valor):
+            return "Sí" if valor else "No"
+
+        def fecha(valor):
+            return valor.strftime("%d/%m/%Y %H:%M:%S") if valor else "-"
+
+        filas = [
+            ("Existe", [si_no(i.existe) for i in infos]),
+            ("Tamaño", [formatear_tamano(i.tamano) for i in infos]),
+            ("Tamaño en bytes", [str(i.tamano) for i in infos]),
+            ("Última modificación", [fecha(i.modificado) for i in infos]),
+            ("Fecha de creación", [fecha(i.creado) for i in infos]),
+            ("Permiso de lectura", [si_no(i.lectura) for i in infos]),
+            ("Permiso de escritura", [si_no(i.escritura) for i in infos]),
+        ]
+        for propiedad, valores in filas:
+            tabla.insert("", "end", values=[propiedad] + valores)
+        tabla.pack(padx=10, pady=10)
+
+        archivo = self.agenda.archivo
+        ttk.Label(ventana, text=f"Carpeta: {archivo.ruta.parent}\n"
+                                f"Registros en contactos.dat: {archivo.total_registros()} × "
+                                f"{config.TAMANO_REGISTRO} bytes").pack(padx=10, anchor="w")
+        ttk.Button(ventana, text="Cerrar", command=ventana.destroy).pack(pady=10)
+        self.log("INFO del archivo (os.stat y os.access)")
+
+    @manejar_errores
+    def reconstruir_indice(self):
+        total, errores = self.agenda.reconstruir_indice()
+        for error in errores:
+            self.log(f"AVISO: {error}")
+        self.log(f"ÍNDICE rehecho con {total} contactos")
+        messagebox.showinfo("Índice", f"Índice reconstruido con {total} contactos.", parent=self)
+
+    # ---- ayuda (simulado) ----
 
     def ayuda_simulada(self):
         messagebox.showinfo("Manual de usuario", "Esta opción todavía no está disponible.", parent=self)
