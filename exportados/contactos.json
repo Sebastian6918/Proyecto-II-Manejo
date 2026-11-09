@@ -1,0 +1,293 @@
+{
+  "generado": "2026-11-09T09:06:30",
+  "total": 41,
+  "contactos": [
+    {
+      "id": 8,
+      "nombre": "Luis Ixcot",
+      "telefono": "5980-2681",
+      "correo": "luis.ixcot65@url.edu.gt",
+      "ciudad": "Cobán"
+    },
+    {
+      "id": 23,
+      "nombre": "Paola Fuentes",
+      "telefono": "5660-9042",
+      "correo": "paola.fuentes72@outlook.com",
+      "ciudad": "Totonicapán"
+    },
+    {
+      "id": 38,
+      "nombre": "Pau Fuentes",
+      "telefono": "4936-2606",
+      "correo": "ana.fuentes11@gmail.com",
+      "ciudad": "Quetzaltenango"
+    },
+    {
+      "id": 50,
+      "nombre": "Alejandra Orozco",
+      "telefono": "3506-5120",
+      "correo": "alejandra.orozco87@yahoo.com",
+      "ciudad": "Cobán"
+    },
+    {
+      "id": 53,
+      "nombre": "Gabriela Cifuentes",
+      "telefono": "5178-6577",
+      "correo": "gabriela.cifuentes96@url.edu.gt",
+      "ciudad": "Sololá"
+    },
+    {
+      "id": 54,
+      "nombre": "Mónica Méndez",
+      "telefono": "3997-6062",
+      "correo": "monica.mendez37@outlook.com",
+      "ciudad": "Almolonga"
+    },
+    {
+      "id": 70,
+      "nombre": "Marvin Tzul",
+      "telefono": "4192-7533",
+      "correo": "marvin.tzul47@outlook.com",
+      "ciudad": "Almolonga"
+    },
+    {
+      "id": 79,
+      "nombre": "Luis Barrios",
+      "telefono": "4507-9595",
+      "correo": "luis.barrios65@url.edu.gt",
+      "ciudad": "Flores"
+    },
+    {
+      "id": 87,
+      "nombre": "Daniela Monzón",
+      "telefono": "5924-1415",
+      "correo": "daniela.monzon62@url.edu.gt",
+      "ciudad": "Zunil"
+    },
+    {
+      "id": 103,
+      "nombre": "Carlos Pérez",
+      "telefono": "5205-8035",
+      "correo": "carlos.perez91@url.edu.gt",
+      "ciudad": "Salcajá"
+    },
+    {
+      "id": 112,
+      "nombre": "Valeria Juárez",
+      "telefono": "5580-9939",
+      "correo": "valeria.juarez16@outlook.com",
+      "ciudad": "Sololá"
+    },
+    {
+      "id": 126,
+      "nombre": "Javier Méndez",
+      "telefono": "5590-7585",
+      "correo": "javier.mendez71@url.edu.gt",
+      "ciudad": "Totonicapán"
+    },
+    {
+      "id": 142,
+      "nombre": "Andrea Castillo",
+      "telefono": "3771-8507",
+      "correo": "andrea.castillo2@gmail.com",
+      "ciudad": "Huehuetenango"
+    },
+    {
+      "id": 156,
+      "nombre": "Fernando Castillo",
+      "telefono": "4623-9145",
+      "correo": "fernando.castillo89@outlook.com",
+      "ciudad": "Sololá"
+    },
+    {
+      "id": 171,
+      "nombre": "Alejandra Pérez",
+      "telefono": "4931-2611",
+      "correo": "alejandra.perez38@yahoo.com",
+      "ciudad": "Antigua Guatemala"
+    },
+    {
+      "id": 174,
+      "nombre": "Marvin Velásquez",
+      "telefono": "3535-8850",
+      "correo": "marvin.velasquez34@outlook.com",
+      "ciudad": "Olintepeque"
+    },
+    {
+      "id": 179,
+      "nombre": "Diego Orozco",
+      "telefono": "3865-7738",
+      "correo": "diego.orozco48@gmail.com",
+      "ciudad": "Mazatenango"
+    },
+    {
+      "id": 186,
+      "nombre": "Ana García",
+      "telefono": "5659-2360",
+      "correo": "ana.garcia1@outlook.com",
+      "ciudad": "Totonicapán"
+    },
+    {
+      "id": 191,
+      "nombre": "Luis Fuentes",
+      "telefono": "4784-6853",
+      "correo": "luis.fuentes6@url.edu.gt",
+      "ciudad": "Quetzaltenango"
+    },
+    {
+      "id": 199,
+      "nombre": "Pablo Monzón",
+      "telefono": "5837-3209",
+      "correo": "pablo.monzon74@outlook.com",
+      "ciudad": "Mazatenango"
+    },
+    {
+      "id": 205,
+      "nombre": "Edgar Gómez",
+      "telefono": "4186-7844",
+      "correo": "edgar.gomez77@url.edu.gt",
+      "ciudad": "Cobán"
+    },
+    {
+      "id": 212,
+      "nombre": "Carlos Monzón",
+      "telefono": "4499-3433",
+      "correo": "carlos.monzon40@url.edu.gt",
+      "ciudad": "Retalhuleu"
+    },
+    {
+      "id": 224,
+      "nombre": "Ana Ramírez",
+      "telefono": "3953-6685",
+      "correo": "ana.ramirez50@gmail.com",
+      "ciudad": "Cobán"
+    },
+    {
+      "id": 239,
+      "nombre": "Ana López",
+      "telefono": "4799-5975",
+      "correo": "ana.lopez66@outlook.com",
+      "ciudad": "Huehuetenango"
+    },
+    {
+      "id": 244,
+      "nombre": "Luis Orozco",
+      "telefono": "5924-3797",
+      "correo": "luis.orozco60@url.edu.gt",
+      "ciudad": "Cantel"
+    },
+    {
+      "id": 247,
+      "nombre": "Kevin Morales",
+      "telefono": "4569-4822",
+      "correo": "kevin.morales56@url.edu.gt",
+      "ciudad": "Sololá"
+    },
+    {
+      "id": 249,
+      "nombre": "Javier Pérez",
+      "telefono": "3763-9925",
+      "correo": "javier.perez26@hotmail.com",
+      "ciudad": "Mazatenango"
+    },
+    {
+      "id": 256,
+      "nombre": "Byron Morales",
+      "telefono": "3761-9682",
+      "correo": "byron.morales62@gmail.com",
+      "ciudad": "Zunil"
+    },
+    {
+      "id": 270,
+      "nombre": "Kevin Gómez",
+      "telefono": "4379-7969",
+      "correo": "kevin.gomez21@hotmail.com",
+      "ciudad": "Almolonga"
+    },
+    {
+      "id": 285,
+      "nombre": "María Cifuentes",
+      "telefono": "4278-5316",
+      "correo": "maria.cifuentes40@hotmail.com",
+      "ciudad": "Mazatenango"
+    },
+    {
+      "id": 300,
+      "nombre": "Daniela Méndez",
+      "telefono": "4631-8897",
+      "correo": "daniela.mendez60@hotmail.com",
+      "ciudad": "Guatemala"
+    },
+    {
+      "id": 303,
+      "nombre": "Kevin Velásquez",
+      "telefono": "3336-1080",
+      "correo": "kevin.velasquez36@gmail.com",
+      "ciudad": "Cobán"
+    },
+    {
+      "id": 315,
+      "nombre": "Óscar Ixcot",
+      "telefono": "5286-1445",
+      "correo": "oscar.ixcot53@url.edu.gt",
+      "ciudad": "Almolonga"
+    },
+    {
+      "id": 324,
+      "nombre": "Lucía Tzul",
+      "telefono": "5321-2797",
+      "correo": "lucia.tzul72@url.edu.gt",
+      "ciudad": "Sololá"
+    },
+    {
+      "id": 328,
+      "nombre": "Edgar Morales",
+      "telefono": "5374-3172",
+      "correo": "edgar.morales73@yahoo.com",
+      "ciudad": "Zunil"
+    },
+    {
+      "id": 340,
+      "nombre": "Diego Ramírez",
+      "telefono": "3800-1990",
+      "correo": "diego.ramirez56@hotmail.com",
+      "ciudad": "Antigua Guatemala"
+    },
+    {
+      "id": 350,
+      "nombre": "Lucía Ramírez",
+      "telefono": "4702-2047",
+      "correo": "lucia.ramirez65@yahoo.com",
+      "ciudad": "Cobán"
+    },
+    {
+      "id": 359,
+      "nombre": "Pablo Hernández",
+      "telefono": "3114-7744",
+      "correo": "pablo.hernandez34@yahoo.com",
+      "ciudad": "Retalhuleu"
+    },
+    {
+      "id": 363,
+      "nombre": "Ana Pérez",
+      "telefono": "3417-3015",
+      "correo": "ana.perez13@hotmail.com",
+      "ciudad": "Olintepeque"
+    },
+    {
+      "id": 376,
+      "nombre": "Mónica Monzón",
+      "telefono": "4721-1622",
+      "correo": "monica.monzon45@yahoo.com",
+      "ciudad": "Huehuetenango"
+    },
+    {
+      "id": 377,
+      "nombre": "Candy Aguilar",
+      "telefono": "3889-2334",
+      "correo": "Candy123@gmail.com",
+      "ciudad": "Alpes"
+    }
+  ]
+}
